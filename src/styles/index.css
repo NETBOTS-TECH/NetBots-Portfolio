@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark text-gray-100 font-sans;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary hover:bg-primary-dark text-white;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary hover:bg-secondary-dark text-white;
+  }
+  
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+  
+  .card {
+    @apply bg-dark-lighter rounded-xl p-6 shadow-lg backdrop-blur-sm;
+  }
+  
+  .section {
+    @apply py-20 px-4 md:px-8;
+  }
+  
+  .container {
+    @apply mx-auto max-w-7xl;
+  }
+  
+  .heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+  
+  .subheading {
+    @apply text-xl md:text-2xl text-gray-400;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-lighter;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+/* Gradient animations */
+.gradient-bg {
+  @apply bg-gradient-to-r from-primary via-secondary to-accent animate-gradient-x;
+} 

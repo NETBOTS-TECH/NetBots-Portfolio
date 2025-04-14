@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { HelmetProvider } from 'react-helmet-async'
@@ -11,7 +10,9 @@ import ProductDetail from './pages/ProductDetail'
 import Portfolio from './pages/Portfolio'
 import Contact from './pages/Contact'
 import Training from './pages/Training'
+import Career from './pages/Career'
 import './styles/index.css'
+
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
               <Route path="portfolio" element={<Portfolio />} />
               <Route path="contact" element={<Contact />} />
               <Route path="training" element={<Training />} />
+              <Route path="careers" element={<Career />} />
+
             </Route>
           </Routes>
         </AnimatePresence>

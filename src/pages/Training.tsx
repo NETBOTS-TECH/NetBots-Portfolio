@@ -45,7 +45,7 @@ const Training: React.FC = () => {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <i className={`${achievement.icon} text-4xl text-primary mb-4`} aria-hidden="true"></i>
+                  {/* <i className={`${achievement.icon} text-4xl text-primary mb-4`} aria-hidden="true"></i> */}
                   <h3 className="text-3xl font-bold text-white mb-2">{achievement.count}</h3>
                   <p className="text-gray-300">{achievement.label}</p>
                 </motion.div>

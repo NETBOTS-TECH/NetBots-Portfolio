@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../components/Logo'
@@ -27,9 +27,9 @@ const Layout = () => {
     { path: '/services', label: 'Services' },
     { path: '/products', label: 'Products' },
     { path: '/portfolio', label: 'Portfolio' },
-    { path: '/contact', label: 'Contact' },
-    { path: '/training', label: 'Skill Development Programs' },
-
+    { path: '/training', label: 'Training' },
+    { path: '/careers', label: 'Career' },
+    { path: '/contact', label: 'Contact' }
   ]
 
   return (
@@ -140,7 +140,7 @@ const Layout = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-dark-lighter">
+      <footer className="bg-gray-900">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Logo and Description */}
@@ -167,7 +167,7 @@ const Layout = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 {navItems.map((item) => (
                   <li key={item.path}>
@@ -184,7 +184,7 @@ const Layout = () => {
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
               <ul className="space-y-3 text-gray-400">
                 <li>
                   <p className="font-medium text-white">NET BOTS (SMC Private) Ltd</p>
@@ -196,9 +196,7 @@ const Layout = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <div>
-                    <a href="tel:+923433757372" className="hover:text-primary transition-colors">0343 3757372</a>
-                    <span className="mx-2">|</span>
-                    <a href="tel:+9205815940502" className="hover:text-primary transition-colors">05815 940502</a>
+                    <a href="tel:+923475484803" className="hover:text-primary transition-colors">+92 347 5484803</a>
                   </div>
                 </li>
                 <li className="flex items-center space-x-2">

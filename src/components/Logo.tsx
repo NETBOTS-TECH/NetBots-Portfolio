@@ -8,14 +8,16 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ variant = 'blue', className = '' }) => {
-  const logoSrc = variant === 'blue' ? blueLogo : whiteLogo
-
+  const logoSrc = variant === 'white' ? whiteLogo : blueLogo
+  
   return (
-    <img
-      src={logoSrc}
-      alt="NetBots Logo"
-      className={`h-8 w-auto ${className}`}
-    />
+    <div className={className}>
+      <img 
+        src={logoSrc} 
+        alt="NetBots Logo" 
+        className="h-full w-auto"
+      />
+    </div>
   )
 }
 

@@ -2,8 +2,19 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { FaBriefcase, FaClinicMedical, FaHotel, FaRocket } from 'react-icons/fa'
 
-const products = [
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  features: string[];
+  category: string;
+  tags: string[];
+  icon: JSX.Element;
+}
+
+export const products: Product[] = [
   {
     id: 'accounta',
     title: 'Accounta',
@@ -19,7 +30,7 @@ const products = [
     ],
     category: 'Finance',
     tags: ['Accounting', 'Finance', 'Business Management'],
-    icon: '💼',
+    icon: <FaBriefcase className="w-12 h-12 text-primary" />,
   },
   {
     id: 'epharma',
@@ -36,7 +47,7 @@ const products = [
     ],
     category: 'Healthcare',
     tags: ['Pharmacy', 'Healthcare', 'POS'],
-    icon: '💊',
+    icon: <FaClinicMedical className="w-12 h-12 text-primary" />,
   },
   {
     id: 'hotelsync',
@@ -53,7 +64,7 @@ const products = [
     ],
     category: 'Hospitality',
     tags: ['Hotels', 'Hospitality', 'Booking'],
-    icon: '🏨',
+    icon: <FaHotel className="w-12 h-12 text-primary" />,
   },
   {
     id: 'coming-soon',
@@ -67,7 +78,7 @@ const products = [
     ],
     category: 'Upcoming',
     tags: ['Innovation', 'AI', 'Future'],
-    icon: '🚀',
+    icon: <FaRocket className="w-12 h-12 text-primary" />,
   }
 ];
 
@@ -192,7 +203,7 @@ const Products: React.FC = () => {
                 viewport={{ once: true }}
                 className="bg-gray-800 rounded-lg p-8"
               >
-                <div className="text-4xl mb-4">{product.icon}</div>
+                <div className="mb-4">{product.icon}</div>
                 <h3 className="text-2xl font-bold text-white mb-4">{product.title}</h3>
                 <p className="text-gray-300 mb-6">{product.description}</p>
                 <div className="space-y-4">

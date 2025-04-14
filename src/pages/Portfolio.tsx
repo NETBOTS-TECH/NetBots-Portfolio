@@ -1,10 +1,49 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+
+const PlaceholderSVG = () => (
+  <div className="w-full h-full bg-dark-lighter flex items-center justify-center">
+    <svg
+      className="w-24 h-24 text-gray-600"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+      />
+    </svg>
+  </div>
+)
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+
+  useEffect(() => {
+    // Add scroll animation styles
+    const styleTag = document.createElement('style');
+    styleTag.textContent = `
+      @keyframes scroll {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(calc(-100% + 300px));
+        }
+      }
+    `;
+    document.head.appendChild(styleTag);
+
+    // Cleanup
+    return () => {
+      styleTag.remove();
+    };
+  }, []);
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
@@ -59,12 +98,29 @@ const Portfolio = () => {
                   className="card group cursor-pointer hover:bg-dark-light transition-colors duration-300"
                   onClick={() => setSelectedProject(project)}
                 >
-                  <div className="aspect-video rounded-lg overflow-hidden mb-6">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                  <div className="aspect-video rounded-lg overflow-hidden mb-6 relative">
+                    {project.image ? (
+                      <div className="w-full h-full overflow-hidden group">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className={`w-full transition-transform duration-[10s] ease-linear ${
+                            project.category === 'website' 
+                              ? 'h-auto min-h-full group-hover:translate-y-[calc(-100%+300px)]' 
+                              : 'h-full object-cover'
+                          }`}
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement?.parentElement?.querySelector('.placeholder')?.classList.remove('hidden');
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <PlaceholderSVG />
+                    )}
+                    <div className="placeholder hidden">
+                      <PlaceholderSVG />
+                    </div>
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                   <p className="text-gray-400 mb-4">{project.shortDescription}</p>
@@ -102,12 +158,34 @@ const Portfolio = () => {
               className="bg-dark-lighter rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-video relative">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+              <div className="aspect-video relative overflow-hidden">
+                {selectedProject.image ? (
+                  <div className="w-full h-full overflow-hidden">
+                    <img
+                      src={selectedProject.image}
+                      alt={selectedProject.title}
+                      className={`w-full animate-scroll ${
+                        selectedProject.category === 'website' 
+                          ? 'h-auto min-h-full' 
+                          : 'h-full object-cover'
+                      }`}
+                      style={{
+                        animation: selectedProject.category === 'website' 
+                          ? 'scroll 15s linear infinite' 
+                          : 'none'
+                      }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.parentElement?.parentElement?.querySelector('.placeholder')?.classList.remove('hidden');
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <PlaceholderSVG />
+                )}
+                <div className="placeholder hidden">
+                  <PlaceholderSVG />
+                </div>
                 <button
                   className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
                   onClick={() => setSelectedProject(null)}
@@ -130,16 +208,6 @@ const Portfolio = () => {
               <div className="p-8">
                 <h2 className="text-2xl font-bold mb-4">{selectedProject.title}</h2>
                 <p className="text-gray-400 mb-6">{selectedProject.description}</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Challenge</h3>
-                    <p className="text-gray-400">{selectedProject.challenge}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4">Solution</h3>
-                    <p className="text-gray-400">{selectedProject.solution}</p>
-                  </div>
-                </div>
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold mb-4">Key Features</h3>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -218,66 +286,156 @@ const Portfolio = () => {
 // Sample data
 const categories = [
   { value: 'all', label: 'All Projects' },
-  { value: 'web', label: 'Web Development' },
-  { value: 'mobile', label: 'Mobile Apps' },
-  { value: 'ai', label: 'AI Solutions' },
+  { value: 'website', label: 'Websites & Web Apps' },
+  { value: 'design', label: 'Design Projects' },
+  { value: 'marketing', label: 'Marketing Solutions' },
 ]
 
 const projects = [
   {
-    title: "TechEd Learning Platform",
-    category: "web",
-    shortDescription: "Modern e-learning platform with AI-powered personalization.",
-    description: "A comprehensive e-learning platform that revolutionizes online education through AI-driven personalization and interactive learning experiences.",
-    challenge: "Create a scalable platform that can handle thousands of concurrent users while providing personalized learning paths for each student.",
-    solution: "Implemented a microservices architecture with AI-powered recommendation system and real-time collaboration features.",
-    image: "/portfolio/teched.jpg",
-    technologies: ["React", "Node.js", "MongoDB", "TensorFlow", "AWS"],
+    title: "Avicena Medical Center",
+    category: "website",
+    shortDescription: "Modern healthcare website with appointment scheduling system.",
+    description: "A comprehensive medical center website built with Next.js, featuring an online appointment system, doctor profiles, and service information portal.",
+    image: "/images/portfolio/website/avicena.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Node.js", "MongoDB"],
     features: [
-      "AI-powered learning paths",
-      "Real-time collaboration",
-      "Interactive assessments",
-      "Progress tracking",
-      "Video conferencing",
+      "Online appointment scheduling",
+      "Doctor profiles and specialties",
+      "Service information portal",
+      "Patient resources section",
+      "Mobile-responsive design",
     ],
-    link: "https://teched-learning.com",
+    link: "#",
   },
   {
-    title: "HealthTrack Mobile App",
-    category: "mobile",
-    shortDescription: "AI-powered health monitoring and fitness tracking app.",
-    description: "A comprehensive health and fitness tracking application that uses AI to provide personalized workout and nutrition recommendations.",
-    challenge: "Develop a user-friendly app that can accurately track various health metrics and provide meaningful insights.",
-    solution: "Created a cross-platform app using React Native with machine learning models for activity recognition and health predictions.",
-    image: "/portfolio/healthtrack.jpg",
-    technologies: ["React Native", "Firebase", "TensorFlow Lite", "Node.js"],
+    title: "Mountain Travels",
+    category: "website",
+    shortDescription: "Adventure tourism and travel booking platform.",
+    description: "A dynamic travel website for mountain adventures and tour bookings, featuring stunning visuals and an easy-to-use booking system.",
+    image: "/images/portfolio/website/mountaintravels.png",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe"],
     features: [
-      "Activity recognition",
-      "Nutrition tracking",
-      "Workout planning",
-      "Health insights",
-      "Social features",
+      "Tour package listings",
+      "Online booking system",
+      "Interactive travel guides",
+      "Customer reviews",
+      "Secure payment processing",
     ],
-    link: "https://healthtrack-app.com",
+    link: "#",
   },
   {
-    title: "SmartRetail Analytics",
-    category: "ai",
-    shortDescription: "Retail analytics platform with AI-powered insights.",
-    description: "An intelligent retail analytics platform that helps businesses optimize their operations through data-driven insights and predictions.",
-    challenge: "Build a system that can process and analyze large volumes of retail data in real-time to provide actionable insights.",
-    solution: "Developed a scalable analytics platform using machine learning for demand forecasting and inventory optimization.",
-    image: "/portfolio/smartretail.jpg",
-    technologies: ["Python", "TensorFlow", "React", "PostgreSQL", "Docker"],
+    title: "RMC Construction",
+    category: "website",
+    shortDescription: "Professional construction company website.",
+    description: "A modern website for a construction company showcasing their projects, services, and expertise in the construction industry.",
+    image: "/images/portfolio/website/rmc.png",
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "Next.js"],
     features: [
-      "Demand forecasting",
-      "Inventory optimization",
-      "Customer segmentation",
-      "Sales analytics",
-      "Automated reporting",
+      "Project portfolio gallery",
+      "Service showcase",
+      "Team profiles",
+      "Project request form",
+      "Interactive animations",
     ],
-    link: "https://smartretail-analytics.com",
+    link: "#",
   },
+  {
+    title: "Rinor Technology",
+    category: "website",
+    shortDescription: "IT solutions and technology services platform.",
+    description: "A corporate website for an IT solutions provider, highlighting their technology services and expertise in digital transformation.",
+    image: "/images/portfolio/website/rinor.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Node.js"],
+    features: [
+      "Service portfolio",
+      "Case studies section",
+      "Technology stack showcase",
+      "Client testimonials",
+      "Contact automation",
+    ],
+    link: "#",
+  },
+  {
+    title: "YHAM",
+    category: "website",
+    shortDescription: "Yousuf Hussain Abadi Museum Web App.",
+    description: "A professional website for Yousuf Hussain Abadi Museum, showcasing their expertise, projects, and comprehensive museum artifacts.",
+    image: "/images/portfolio/website/yham.png",
+    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+    features: [
+      "Virtual museum tour",
+      "Artifact catalog",
+      "Historical timeline",
+      "Exhibition calendar",
+      "Educational resources",
+    ],
+    link: "#",
+  },
+  {
+    title: "Brand Identity Design",
+    category: "design",
+    shortDescription: "Complete brand identity design for a tech startup.",
+    description: "A comprehensive brand identity project including logo design, color palette, typography, and brand guidelines.",
+    image: "src/assets/portfolio/designs/brand-design.jpg",
+    technologies: ["Figma", "Adobe Illustrator", "Adobe Photoshop"],
+    features: [
+      "Logo design and variations",
+      "Brand guidelines documentation",
+      "Custom icon set",
+      "Typography system",
+      "Color palette development",
+    ],
+    link: "#",
+  },
+  {
+    title: "UI/UX Design System",
+    category: "design",
+    shortDescription: "Modern design system for a financial technology platform.",
+    description: "A comprehensive design system that ensures consistency across web and mobile applications while maintaining accessibility standards.",
+    image: "src/assets/portfolio/designs/design-system.jpg",
+    technologies: ["Figma", "Storybook", "Zeplin"],
+    features: [
+      "Component library",
+      "Design tokens",
+      "Accessibility guidelines",
+      "Interactive prototypes",
+      "Design documentation",
+    ],
+    link: "#",
+  },
+  {
+    title: "Digital Marketing Campaign",
+    category: "marketing",
+    shortDescription: "Comprehensive digital marketing campaign for product launch.",
+    description: "A multi-channel digital marketing campaign that increased brand awareness and generated qualified leads.",
+    image: "src/assets/portfolio/marketing/marketing-campaign.jpg",
+    technologies: ["Google Ads", "Meta Ads", "Mailchimp", "HubSpot", "Google Analytics"],
+    features: [
+      "Social media marketing",
+      "Email marketing campaigns",
+      "Content marketing",
+      "SEO optimization",
+      "Performance analytics",
+    ],
+    link: "#",
+  },
+  {
+    title: "SEO Optimization Project",
+    category: "marketing",
+    shortDescription: "Complete SEO optimization for an e-commerce website.",
+    description: "A comprehensive SEO project that improved search rankings and organic traffic for an e-commerce platform.",
+    image: "src/assets/portfolio/marketing/seo-project.jpg",
+    technologies: ["SEMrush", "Ahrefs", "Google Search Console", "Google Analytics", "WordPress"],
+    features: [
+      "Technical SEO audit",
+      "Content optimization",
+      "Link building strategy",
+      "Local SEO optimization",
+      "Performance monitoring",
+    ],
+    link: "#",
+  }
 ]
 
 export default Portfolio 

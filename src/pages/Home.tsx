@@ -1,11 +1,11 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
+import { FaSearch, FaCode, FaCheckCircle, FaRocket, FaHeadset } from 'react-icons/fa'
 
 const achievements = [
   {
-    number: '500+',
+    number: '50+',
     label: 'Clients Worldwide',
     description: 'Trusted by businesses across industries'
   },
@@ -20,33 +20,9 @@ const achievements = [
     description: 'Round-the-clock expert assistance'
   },
   {
-    number: '50+',
+    number: '10+',
     label: 'Countries Served',
     description: 'Global presence and impact'
-  }
-]
-
-const testimonials = [
-  {
-    name: 'John Smith',
-    role: 'CTO',
-    company: 'TechGrowth Inc.',
-    image: '/testimonials/john.jpg',
-    content: 'NetBots has transformed our development process. Their AI solutions have increased our productivity by 300%.'
-  },
-  {
-    name: 'Emma Davis',
-    role: 'Operations Director',
-    company: 'Global Logistics',
-    image: '/testimonials/emma.jpg',
-    content: 'The automation capabilities of NetBots have streamlined our operations and reduced costs significantly.'
-  },
-  {
-    name: 'Alex Chen',
-    role: 'Lead Developer',
-    company: 'InnovateTech',
-    image: '/testimonials/alex.jpg',
-    content: 'As a developer, I appreciate the robust architecture and clean code that NetBots delivers.'
   }
 ]
 
@@ -55,31 +31,31 @@ const deliveryProcess = [
     step: 1,
     title: 'Discovery',
     description: 'We analyze your needs and create a tailored solution plan.',
-    icon: '🔍'
+    icon: <FaSearch className="w-8 h-8 text-primary mx-auto" />
   },
   {
     step: 2,
     title: 'Development',
     description: 'Our experts build your solution using cutting-edge technology.',
-    icon: '⚙️'
+    icon: <FaCode className="w-8 h-8 text-primary mx-auto" />
   },
   {
     step: 3,
     title: 'Testing',
     description: 'Rigorous testing ensures quality and reliability.',
-    icon: '✓'
+    icon: <FaCheckCircle className="w-8 h-8 text-primary mx-auto" />
   },
   {
     step: 4,
     title: 'Deployment',
     description: 'Smooth deployment with minimal disruption to your business.',
-    icon: '🚀'
+    icon: <FaRocket className="w-8 h-8 text-primary mx-auto" />
   },
   {
     step: 5,
     title: 'Support',
     description: '24/7 support and maintenance to ensure optimal performance.',
-    icon: '💬'
+    icon: <FaHeadset className="w-8 h-8 text-primary mx-auto" />
   }
 ]
 
@@ -87,15 +63,29 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>NetBots - Innovative Software Solutions</title>
-        <meta name="description" content="NetBots delivers cutting-edge software solutions powered by AI and automation to transform your business operations." />
-        <meta name="keywords" content="software development, AI solutions, automation, digital transformation" />
-        <link rel="canonical" href="https://netbots.com" />
+        <title>NetBots - Leading Software Development Company in Pakistan | AI & Automation Solutions</title>
+        <meta name="description" content="NetBots delivers innovative software solutions powered by AI and automation. Transform your business with our cutting-edge web, mobile, and cloud services." />
+        <meta name="keywords" content="software development, AI solutions, automation, digital transformation, web development, mobile apps, cloud services, Pakistan software company, Skardu tech, artificial intelligence, machine learning, custom software" />
+        <link rel="canonical" href="https://netbots.io" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://netbots.io" />
+        <meta property="og:title" content="NetBots - Leading Software Development Company" />
+        <meta property="og:description" content="Transform your business with our innovative software solutions powered by AI and automation." />
+        <meta property="og:image" content="https://netbots.io/og-image.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://netbots.io" />
+        <meta property="twitter:title" content="NetBots - Leading Software Development Company" />
+        <meta property="twitter:description" content="Transform your business with our innovative software solutions powered by AI and automation." />
+        <meta property="twitter:image" content="https://netbots.io/twitter-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-        {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Hero Section - Mobile First */}
+        <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden px-4 py-20 md:py-0">
           {/* Animated Background */}
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 mix-blend-multiply" />
@@ -117,33 +107,33 @@ const Home = () => {
           </div>
 
           {/* Hero Content */}
-          <div className="container mx-auto px-4 z-10">
+          <div className="container mx-auto z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Transform Your Business with{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
                   NetBots
                 </span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 px-4">
                 Innovative software solutions powered by AI and automation to streamline your operations
                 and drive growth.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
                 <Link
                   to="/contact"
-                  className="px-8 py-3 bg-primary hover:bg-primary-dark rounded-lg transition-colors text-white font-semibold"
+                  className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-dark rounded-lg transition-colors text-white font-semibold text-center"
                 >
                   Get Started
                 </Link>
                 <Link
                   to="/services"
-                  className="px-8 py-3 border-2 border-white text-white hover:bg-white/10 rounded-lg transition-colors font-semibold"
+                  className="w-full sm:w-auto px-8 py-4 border-2 border-white text-white hover:bg-white/10 rounded-lg transition-colors font-semibold text-center"
                 >
                   Our Services
                 </Link>
@@ -223,7 +213,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
+        {/* Google Reviews Section */}
         <section className="py-20 px-4 bg-gray-900">
           <div className="container mx-auto">
             <motion.div
@@ -235,35 +225,11 @@ const Home = () => {
             >
               <h2 className="text-3xl font-bold text-white mb-4">What Our Clients Say</h2>
               <p className="text-gray-300 max-w-2xl mx-auto">
-                Hear from businesses that have transformed with NetBots
+                Real reviews from our valued clients
               </p>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-gray-800 p-6 rounded-lg"
-                >
-                  <div className="flex items-center gap-4 mb-6">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-semibold text-white">{testimonial.name}</div>
-                      <div className="text-gray-400">
-                        {testimonial.role}, {testimonial.company}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-300">{testimonial.content}</p>
-                </motion.div>
-              ))}
+            <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl p-8">
+              <div className="elfsight-app-d23688b3-c509-4a52-bcb4-7eb294281a7e" data-elfsight-app-lazy></div>
             </div>
           </div>
         </section>
@@ -295,59 +261,5 @@ const Home = () => {
     </>
   )
 }
-
-// Sample data
-const services = [
-  {
-    title: "Web & App Development",
-    description: "Custom web applications and mobile apps built with modern technologies.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-  {
-    title: "AI-Powered Solutions",
-    description: "Intelligent automation and machine learning solutions for your business.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Cloud & DevOps",
-    description: "Scalable cloud infrastructure and automated deployment pipelines.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-      </svg>
-    ),
-  },
-]
-
-const products = [
-  {
-    title: "Edutally",
-    description: "AI-powered school management system that streamlines administrative tasks and enhances learning experiences.",
-    link: "/products/edutally",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    ),
-  },
-  {
-    title: "StockWare",
-    description: "Smart inventory and POS system that helps businesses manage stock and sales efficiently.",
-    link: "/products/stockware",
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-      </svg>
-    ),
-  },
-]
 
 export default Home 

@@ -1,91 +1,183 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+import { FaRocket, FaStar, FaHandshake, FaBullseye, FaWhatsapp } from 'react-icons/fa'
 
 const About = () => {
+  const teamMembers = [
+    {
+      name: "Saqlain Shah",
+      role: "Founder & CEO",
+      category: "leadership"
+    },
+    {
+      name: "Karamat Ali",
+      role: "COO",
+      category: "leadership"
+    },
+    {
+      name: "M Abdullah",
+      role: "Team Lead",
+      category: "leadership"
+    },
+    {
+      name: "Shehbaz Alam",
+      role: "Full Stack Developer",
+      category: "development"
+    },
+    {
+      name: "M Rafiq",
+      role: "Full Stack Developer",
+      category: "development"
+    },
+    {
+      name: "Farukh Hussain",
+      role: "Full Stack Developer",
+      category: "development"
+    },
+    {
+      name: "Jalal Hussain",
+      role: "Full Stack Developer",
+      category: "development"
+    },
+    {
+      name: "Syed Sibtain",
+      role: "Graphic Designer",
+      category: "creative"
+    },
+    {
+      name: "Syed Hasnain",
+      role: "Digital Marketer",
+      category: "marketing"
+    },
+    {
+      name: "Sania Zahra",
+      role: "Digital Marketer",
+      category: "marketing"
+    },
+    {
+      name: "Malika Bani",
+      role: "Web Developer",
+      category: "development"
+    },
+    {
+      name: "Arifa Batool",
+      role: "Web Developer",
+      category: "development"
+    }
+  ]
+
+  const values = [
+    {
+      title: 'Innovation',
+      description: 'Pushing boundaries with cutting-edge solutions and creative problem-solving.',
+      icon: <FaRocket className="w-12 h-12 text-primary mx-auto" />
+    },
+    {
+      title: 'Excellence',
+      description: 'Delivering high-quality solutions that exceed expectations.',
+      icon: <FaStar className="w-12 h-12 text-primary mx-auto" />
+    },
+    {
+      title: 'Collaboration',
+      description: 'Working together to achieve remarkable results.',
+      icon: <FaHandshake className="w-12 h-12 text-primary mx-auto" />
+    },
+    {
+      title: 'Integrity',
+      description: 'Building trust through honesty and transparency.',
+      icon: <FaBullseye className="w-12 h-12 text-primary mx-auto" />
+    }
+  ]
+
+  // WhatsApp contact details
+  const whatsappNumber = '+923475484803'
+  const whatsappMessage = encodeURIComponent('Hi NetBots, I would like to discuss a project.')
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-16 md:pt-20">
+      <Helmet>
+        <title>About NetBots - Leading Software Development Company in Pakistan</title>
+        <meta name="description" content="Learn about NetBots, a pioneering software development company in Pakistan. Meet our expert team dedicated to delivering innovative tech solutions." />
+        <meta name="keywords" content="about netbots, software company pakistan, tech company skardu, software development team, AI development pakistan, digital transformation experts" />
+        <link rel="canonical" href="https://netbots.io/about" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://netbots.io/about" />
+        <meta property="og:title" content="About NetBots - Leading Software Development Company" />
+        <meta property="og:description" content="Discover NetBots' journey in revolutionizing software development and digital transformation in Pakistan." />
+        <meta property="og:image" content="https://netbots.io/og-about.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://netbots.io/about" />
+        <meta property="twitter:title" content="About NetBots - Leading Software Development Company" />
+        <meta property="twitter:description" content="Discover NetBots' journey in revolutionizing software development and digital transformation in Pakistan." />
+        <meta property="twitter:image" content="https://netbots.io/twitter-about.jpg" />
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="section">
-        <div className="container">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <h1 className="heading mb-6">About NetBots</h1>
-            <p className="subheading max-w-3xl mx-auto">
-              We're a team of passionate technologists dedicated to transforming businesses
-              through innovative software solutions and AI-driven automation.
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">About NetBots</h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+              Pioneering the future of software development with innovation and excellence.
             </p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Our Mission
-              </h2>
-              <p className="text-gray-400 mb-6">
-                To empower organizations with cutting-edge technology solutions that drive
-                growth, efficiency, and innovation in the digital age.
+      {/* Mission Section */}
+      <section className="py-16 md:py-24 px-4 bg-gray-900">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+          >
+            <div>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Mission</h2>
+              <p className="text-lg md:text-xl text-gray-300">
+                To empower businesses through innovative software solutions and digital transformation, 
+                making technology accessible and impactful for organizations of all sizes.
               </p>
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Our Vision
-              </h2>
-              <p className="text-gray-400">
-                To be the leading force in digital transformation, creating intelligent
-                solutions that shape the future of business and technology.
+            </div>
+            <div className="bg-gradient-to-r from-primary/20 to-accent/20 p-8 rounded-2xl">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Vision</h2>
+              <p className="text-lg md:text-xl text-gray-300">
+                To be the leading force in digital transformation, creating intelligent solutions 
+                that shape the future of business and technology in Pakistan and beyond.
               </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="aspect-video rounded-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20" />
-                <img
-                  src="/about-image.jpg"
-                  alt="NetBots Office"
-                  className="w-full h-full object-cover mix-blend-overlay"
-                />
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="section bg-dark-lighter">
-        <div className="container">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="heading text-center mb-12"
-          >
-            Our Values
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-16 md:py-24 px-4 bg-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-12">Our Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card text-center"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gray-700 p-8 rounded-2xl text-center transform hover:scale-105 transition-transform duration-300"
               >
-                <div className="mb-6 text-primary">{value.icon}</div>
-                <h3 className="text-xl font-semibold mb-4">{value.title}</h3>
-                <p className="text-gray-400">{value.description}</p>
+                <div className="text-5xl mb-4">{value.icon}</div>
+                <h3 className="text-2xl font-semibold text-white mb-3">{value.title}</h3>
+                <p className="text-gray-300">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -93,43 +185,115 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="section">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="heading mb-4">Meet Our Team</h2>
-            <p className="subheading">The minds behind NetBots' innovation</p>
-          </motion.div>
+      <section className="py-16 md:py-24 px-4 bg-gray-900">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-12">Our Team</h2>
+          
+          {/* Leadership */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-primary mb-8">Leadership</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers
+                .filter(member => member.category === 'leadership')
+                .map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gray-800 p-6 rounded-xl hover:bg-gray-700 transition-colors"
+                  >
+                    <h4 className="text-xl font-semibold text-white mb-2">{member.name}</h4>
+                    <p className="text-primary">{member.role}</p>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="card text-center group"
-              >
-                <div className="mb-6 relative">
-                  <div className="aspect-square rounded-full overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                <p className="text-primary mb-4">{member.role}</p>
-                <p className="text-gray-400 text-sm">{member.description}</p>
-              </motion.div>
-            ))}
+          {/* Development Team */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-primary mb-8">Development Team</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers
+                .filter(member => member.category === 'development')
+                .map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gray-800 p-6 rounded-xl hover:bg-gray-700 transition-colors"
+                  >
+                    <h4 className="text-xl font-semibold text-white mb-2">{member.name}</h4>
+                    <p className="text-primary">{member.role}</p>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+
+          {/* Creative & Marketing */}
+          <div>
+            <h3 className="text-2xl font-bold text-primary mb-8">Creative & Marketing</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers
+                .filter(member => member.category === 'creative' || member.category === 'marketing')
+                .map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-gray-800 p-6 rounded-xl hover:bg-gray-700 transition-colors"
+                  >
+                    <h4 className="text-xl font-semibold text-white mb-2">{member.name}</h4>
+                    <p className="text-primary">{member.role}</p>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-6xl font-bold text-white mb-2">12+</div>
+              <p className="text-gray-300">Team Members</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-6xl font-bold text-white mb-2">50+</div>
+              <p className="text-gray-300">Projects Completed</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-6xl font-bold text-white mb-2">100%</div>
+              <p className="text-gray-300">Client Satisfaction</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-center"
+            >
+              <div className="text-4xl md:text-6xl font-bold text-white mb-2">24/7</div>
+              <p className="text-gray-300">Support</p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -153,9 +317,15 @@ const About = () => {
               <Link to="/careers" className="btn-primary">
                 View Careers
               </Link>
-              <Link to="/contact" className="btn-outline">
-                Get in Touch
-              </Link>
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline flex items-center gap-2"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+                Chat with Us
+              </a>
             </div>
           </motion.div>
         </div>
@@ -163,63 +333,5 @@ const About = () => {
     </div>
   )
 }
-
-// Sample data
-const values = [
-  {
-    title: "Innovation",
-    description: "We constantly push boundaries and embrace new technologies to deliver cutting-edge solutions.",
-    icon: (
-      <svg className="w-12 h-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Excellence",
-    description: "We strive for perfection in every line of code and every solution we deliver.",
-    icon: (
-      <svg className="w-12 h-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Collaboration",
-    description: "We believe in the power of teamwork and building lasting partnerships with our clients.",
-    icon: (
-      <svg className="w-12 h-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-  },
-]
-
-const team = [
-  {
-    name: "Sarah Chen",
-    role: "CEO & Founder",
-    description: "Tech visionary with 15+ years of experience in software development and AI.",
-    image: "/team/sarah.jpg",
-  },
-  {
-    name: "David Rodriguez",
-    role: "CTO",
-    description: "Expert in cloud architecture and distributed systems.",
-    image: "/team/david.jpg",
-  },
-  {
-    name: "Emily Watson",
-    role: "Head of AI",
-    description: "Leading our AI initiatives with expertise in machine learning.",
-    image: "/team/emily.jpg",
-  },
-  {
-    name: "Michael Park",
-    role: "Lead Developer",
-    description: "Full-stack developer specializing in modern web technologies.",
-    image: "/team/michael.jpg",
-  },
-]
 
 export default About 

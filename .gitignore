@@ -16,8 +16,8 @@ out/
 .swc/
 
 # production
-build/
-dist/
+
+
 .vercel/
 
 # misc

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa'
+import { FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle } from 'react-icons/fa'
 
 // const socialLinks = [
 //   {
@@ -33,6 +33,39 @@ import { FaWhatsapp, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa'
 //   },
 // ]
 
+// Success Modal Component
+const SuccessModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        className="bg-gray-800 p-8 rounded-lg max-w-md w-full mx-4"
+      >
+        <div className="flex flex-col items-center text-center">
+          <FaCheckCircle className="text-green-500 text-6xl mb-4" />
+          <h2 className="text-2xl font-bold mb-4 text-white">Application Received!</h2>
+          <p className="text-gray-300 mb-4">
+            Thank you for submitting your information. Our team will carefully review your details.
+          </p>
+          <p className="text-gray-300 mb-6">
+            If your profile matches our criteria, we will contact you soon for further discussion.
+          </p>
+          <button
+            onClick={onClose}
+            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -40,6 +73,8 @@ const Contact = () => {
     subject: '',
     message: ''
   })
+
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -69,6 +104,9 @@ const Contact = () => {
     
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, '_blank')
+    
+    // Show success modal
+    setShowSuccessModal(true)
     
     // Reset form
     setFormData({
@@ -226,6 +264,14 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
+        
+        {/* Success Modal */}
+        <AnimatePresence>
+          <SuccessModal 
+            isOpen={showSuccessModal} 
+            onClose={() => setShowSuccessModal(false)} 
+          />
+        </AnimatePresence>
       </section>
     </div>
   )

@@ -126,10 +126,10 @@ const Home = () => {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 px-4">
                 <Link
-                  to="/contact"
+                  to="/apply-training"
                   className="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primary-dark rounded-lg transition-colors text-white font-semibold text-center"
                 >
-                  Get Started
+                  Apply Training Program
                 </Link>
                 <Link
                   to="/services"

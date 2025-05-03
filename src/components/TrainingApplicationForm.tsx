@@ -60,16 +60,24 @@ interface SkillCategories {
 }
 
 const trainingPrograms = [
-  'Vibe Coding - Full Stack Development',
-  'AI & Machine Learning',
-  'Cloud Computing & DevOps',
-  'Mobile App Development',
-  'UI/UX Design',
-  'Digital Marketing',
-  'Blockchain Development',
-  'Cybersecurity',
-  'Data Science & Analytics',
-  'Game Development'
+  '1. Vibe Coding - Full Stack Development',
+  '2. Lead Generation & Sales Experts',
+  '3. AI & Machine Learning',
+  '4. Cloud Computing & DevOps',
+  '5. Blockchain Development',
+  '6. Cybersecurity',
+  '7. Data Science & Analytics',
+  '8. Game Development',
+  '9. Web Development',
+  '10. App Development',
+  '11. Digital Marketing',
+  '12. Graphic Designing',
+  '13. UI/UX Design',
+  '14. E-commerce',
+  '15. SEO & SEM',
+  '16. Content Writing',
+  '17. Computer Basics',
+  '18. Programming Fundamentals'
 ];
 
 const programmingSkillsOptions: SkillCategories = {
@@ -79,67 +87,139 @@ const programmingSkillsOptions: SkillCategories = {
       'HTML5', 'CSS3', 'JavaScript (ES6+)', 'TypeScript',
       'React.js', 'Next.js', 'Vue.js', 'Angular',
       'Tailwind CSS', 'SASS/SCSS', 'Bootstrap',
-      'Redux', 'GraphQL Client', 'WebPack', 'Vite'
+      'Redux', 'Zustand', 'GraphQL Client',
+      'Vite', 'Webpack', 'Parcel',
+      'WordPress', 'Shopify', 'Responsive Design',
+      'Progressive Web Apps (PWAs)', 'Accessibility (a11y)', 'Figma to Code'
     ]
   },
+
   backend: {
     label: 'Backend Development',
     skills: [
-      'Node.js', 'Express.js', 'Python', 'Django',
-      'Java', 'Spring Boot', 'PHP', 'Laravel',
-      'Ruby on Rails', 'ASP.NET Core', 'GraphQL',
-      'REST API', 'WebSocket', 'Microservices'
+      'Node.js', 'Express.js', 'NestJS', 'Python', 'Django', 'Flask',
+      'Java', 'Spring Boot', 'PHP', 'Laravel', 'Ruby on Rails',
+      'ASP.NET Core', 'GoLang', 'GraphQL', 'REST API', 'WebSocket',
+      'Socket.IO', 'gRPC', 'gRPC-Web', 'Authentication & Authorization',
+      'Microservices', 'API Gateway', 'Rate Limiting', 'Caching Strategies'
     ]
   },
+
   database: {
     label: 'Database Technologies',
     skills: [
       'MongoDB', 'PostgreSQL', 'MySQL', 'Redis',
-      'Firebase', 'Elasticsearch', 'DynamoDB',
-      'Oracle', 'MS SQL Server', 'Cassandra'
+      'Firebase Realtime DB & Firestore', 'Elasticsearch', 'DynamoDB',
+      'Oracle', 'MS SQL Server', 'Cassandra',
+      'Supabase', 'PlanetScale', 'Prisma ORM', 'TypeORM'
     ]
   },
+
   mobile: {
     label: 'Mobile Development',
     skills: [
       'React Native', 'Flutter', 'iOS (Swift)',
       'Android (Kotlin)', 'Xamarin', 'Ionic',
-      'Mobile App Testing', 'App Store Optimization'
+      'Electron.js', 'Capacitor.js',
+      'Cross-Platform Development', 'Native Applications',
+      'App Store Optimization', 'Mobile CI/CD',
+      'System & Database Integration', 'Push Notifications',
+      'Mobile Performance Optimization'
     ]
   },
+
   devops: {
     label: 'DevOps & Cloud',
     skills: [
       'Docker', 'Kubernetes', 'AWS', 'Azure',
-      'Google Cloud', 'CI/CD', 'Jenkins', 'Git',
-      'Linux', 'Nginx', 'Terraform', 'Ansible'
+      'Google Cloud Platform (GCP)', 'CI/CD Pipelines', 'GitHub Actions',
+      'Jenkins', 'GitLab CI', 'Linux Administration',
+      'Nginx', 'Apache', 'Terraform', 'Ansible',
+      'Helm', 'CloudFormation', 'Serverless Framework',
+      'Monitoring (Prometheus, Grafana)', 'Logging (ELK, Loki)',
+      'Infrastructure as Code (IaC)', 'Cloud Security',
+      'Performance Tuning', 'Load Balancing', 'Auto Scaling',
+      'Incident Management', 'DevOps Culture & Tools'
     ]
   },
+
   testing: {
     label: 'Testing & QA',
     skills: [
-      'Jest', 'React Testing Library', 'Cypress',
-      'Selenium', 'JUnit', 'TestNG', 'Postman',
-      'Load Testing', 'Security Testing'
+      'Jest', 'Mocha', 'Chai', 'React Testing Library',
+      'Cypress', 'Selenium', 'JUnit', 'TestNG',
+      'Postman', 'Puppeteer', 'Playwright',
+      'Unit Testing', 'Integration Testing',
+      'End-to-End (E2E) Testing', 'API Testing',
+      'Security Testing', 'Load & Performance Testing',
+      'Cross-Browser Testing', 'Accessibility Testing',
+      'Regression Testing', 'Test Automation',
+      'Manual Testing', 'Bug Tracking (JIRA, Bugzilla)'
     ]
   },
+
   ai_ml: {
     label: 'AI & Machine Learning',
     skills: [
-      'TensorFlow', 'PyTorch', 'Scikit-learn',
-      'NLP', 'Computer Vision', 'Deep Learning',
-      'Data Analysis', 'Neural Networks'
+      'Python', 'TensorFlow', 'PyTorch', 'Keras',
+      'Scikit-learn', 'OpenCV', 'Pandas', 'NumPy',
+      'Natural Language Processing (NLP)', 'LLMs', 'HuggingFace',
+      'Reinforcement Learning', 'Deep Learning',
+      'Computer Vision', 'Speech Recognition',
+      'Model Training & Evaluation', 'Data Cleaning',
+      'Data Visualization (Matplotlib, Seaborn)', 'ML Deployment (FastAPI, Flask)',
+      'MLOps', 'Model Monitoring', 'AutoML'
     ]
   },
+
   other: {
     label: 'Other Technologies',
     skills: [
-      'Blockchain', 'WebGL', 'Unity', 'AR/VR',
-      'IoT', 'Embedded Systems', 'Web3',
-      'Cybersecurity', 'UI/UX Design'
+      // Blockchain
+      'Blockchain Basics', 'Smart Contracts', 'Solidity', 'Ethereum', 'Web3.js', 'Hardhat', 'Metamask Integration',
+
+      // Cybersecurity
+      'Cybersecurity Fundamentals', 'Ethical Hacking', 'Penetration Testing', 'OWASP Top 10', 'Network Security',
+      'Encryption Techniques', 'SIEM Tools', 'Firewall Configuration', 'Incident Response',
+
+      // UI/UX
+      'UI/UX Principles', 'Figma', 'Adobe XD', 'User Research', 'Wireframing', 'Prototyping', 'Design Systems',
+
+      // Game Development
+      'Unity', 'C#', 'Unreal Engine', '2D/3D Game Design', 'Game Physics', 'Animation', 'Level Design',
+
+      // Content & Digital
+      'SEO', 'SEM', 'Google Ads', 'Facebook Ads', 'Email Marketing', 'Affiliate Marketing',
+      'Copywriting', 'Content Strategy', 'Analytics (Google Analytics, Hotjar)',
+
+      // E-commerce
+      'Shopify Development', 'WooCommerce', 'Magento', 'Payment Gateway Integration', 'Dropshipping Automation',
+
+      // Graphic Design
+      'Adobe Photoshop', 'Adobe Illustrator', 'Canva', 'Branding', 'Typography', 'Motion Graphics',
+
+      // Data & Business Intelligence
+      'Excel (Advanced)', 'Power BI', 'Tableau', 'ETL Processes', 'Data Warehousing',
+      'Business Analytics', 'Predictive Analytics', 'Prescriptive Analytics', 'SQL for Data Analysis',
+
+      // Computer Fundamentals
+      'MS Office Suite', 'Email & Internet Basics', 'File Management', 'Operating Systems (Windows/Linux)',
+      'Typing Skills', 'Basic Hardware & Software Troubleshooting',
+
+      // Content Writing
+      'Technical Writing', 'Blog Writing', 'Script Writing', 'SEO Writing', 'Proofreading', 'Research Skills',
+
+      // Voice & Assistants
+      'Chatbot Development', 'Dialogflow', 'Voice UX', 'Speech Recognition APIs',
+
+      // Emerging Tech
+      'IoT', 'AR/VR', 'Edge Computing', 'Digital Twins', 'Quantum Computing',
+      'Wearables', 'Data Governance', 'Data Privacy & Ethics', 'Data Architecture',
+      'Big Data Technologies', 'Data Lakes', 'Data Pipelines', 'Data Lineage'
     ]
   }
 };
+
 
 const softSkillsOptions = [
   'Communication', 'Team Work', 'Problem Solving', 'Time Management',
@@ -790,6 +870,9 @@ const TrainingApplicationForm: React.FC = () => {
               {/* Programming Skills */}
               <div className="space-y-6">
                 <h4 className="text-lg font-medium text-white">Programming Skills</h4>
+                <p className="text-sm text-gray-300">
+        We’ve listed a categorized set of skills below. Please select the skills you are familiar with or currently working on. This step is completely optional, no pressure at all. However, sharing this information helps us streamline the screening and filtering process for applicants.
+      </p>
                 <div className="space-y-6">
                   {Object.entries(programmingSkillsOptions).map(([category, { label, skills }]) => (
                     <div key={category} className="p-6 bg-gray-800/50 rounded-xl space-y-4">

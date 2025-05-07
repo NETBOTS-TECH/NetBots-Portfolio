@@ -14,6 +14,7 @@ import Training from './pages/Training'
 import Career from './pages/Career'
 import ApplyTraining from './pages/ApplyTraining'
 import Pricing from './pages/Pricing'
+import PricingDetail from './pages/PricingDetail'
 import './styles/index.css'
 import { Toaster } from 'react-hot-toast'
 import ScrollToTop from './components/ScrollToTop'
@@ -91,6 +92,7 @@ const App: React.FC = () => {
               <Route path="careers" element={<Career />} />
               <Route path="apply-training" element={<ApplyTraining />} />
               <Route path="pricing" element={<Pricing />} />
+              <Route path="pricing/:category/:plan" element={<PricingDetail />} />
             </Route>
           </Routes>
         </AnimatePresence>

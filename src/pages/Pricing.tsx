@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaPaintBrush, FaCode, FaBullhorn, FaGem, FaStar, FaUserFriends, FaShieldAlt, FaRocket } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const categories = [
   {
@@ -202,21 +203,21 @@ const Pricing: React.FC = () => {
                   <p className="text-gray-300 mb-4 min-h-[48px] break-words">{plan.description}</p>
                   <div className="flex flex-col gap-2 mb-6">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-primary break-words">{plan.usd.toLocaleString()} <span className="text-base font-medium text-gray-400">USD</span></span>
+                      <span className="text-2xl font-bold text-primary break-words">Starting from {plan.usd.toLocaleString()} <span className="text-base font-medium text-gray-400">USD</span></span>
                       <span className="text-xs text-gray-400">(International clients)</span>
                     </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-medium text-gray-400 break-words">{plan.pkr.toLocaleString()} PKR</span>
+                      <span className="text-sm font-medium text-gray-400 break-words">Starting from {plan.pkr.toLocaleString()} PKR</span>
                       <span className="text-xs text-gray-500">(Pakistani clients)</span>
                     </div>
                   </div>
                   <div className="flex mt-auto">
-                    <a
-                      href={`mailto:info@netbot.io?subject=Interested in ${encodeURIComponent(plan.name)} Plan`}
+                    <Link
+                      to={`/pricing/${selectedCategory}/${plan.name.toLowerCase().replace(/\s+/g, '-')}`}
                       className={`px-6 py-2 rounded-lg font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 w-full text-center block ${plan.popular ? 'bg-primary text-white' : 'bg-gray-700 text-primary hover:bg-primary hover:text-white'}`}
                     >
-                      Get Started
-                    </a>
+                      View Details
+                    </Link>
                   </div>
                 </motion.div>
               ))}
@@ -227,7 +228,7 @@ const Pricing: React.FC = () => {
 
       {/* Why Choose Us */}
       <section className="max-w-5xl mx-auto px-4 mb-20">
-        <h2 className="text-3xl font-bold text-primary text-center mb-10">Why Partner with NET BOTS?</h2>
+        <h2 className="text-3xl font-bold text-primary text-center mb-10">Why Partner with NetBots?</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {whyUs.map((item) => (
             <div key={item.title} className="bg-gray-800 rounded-xl p-6 flex flex-col items-center text-center shadow border border-gray-700">

@@ -191,6 +191,14 @@ const Layout: React.FC<LayoutProps> = () => {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    to="/pricing"
+                    className="text-gray-400 hover:text-primary transition-colors font-semibold"
+                  >
+                    Pricing
+                  </Link>
+                </li>
               </ul>
             </div>
 
